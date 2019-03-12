@@ -18,7 +18,6 @@ public class IosAppService {
 
 
      Flux<IosApp> streamIosApps(){
-
         return Flux.zip(Flux.interval(Duration.ofSeconds(1)), this.iosAppRepository.findAll()).map(Tuple2::getT2);
     }
 
@@ -27,7 +26,7 @@ public class IosAppService {
         return this.iosAppRepository.findAll();
     }
 
-    Flux<Long> streamSecondes(){
+    Flux<Long> streamSeconds() {
         return Flux.interval(Duration.ofSeconds(1));
 
     }

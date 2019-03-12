@@ -26,7 +26,7 @@ public class IosAppRouter {
 
 
                 .andRoute(GET("/seconds"), request -> ok()
-                        .body(iosAppService.streamSecondes(), Long.class));
+                        .body(iosAppService.streamSeconds(), Long.class));
 
     }
 
