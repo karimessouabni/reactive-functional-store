@@ -17,15 +17,19 @@ public class IosAppService {
     }
 
 
-    public Flux<IosApp> streamIosApps(){
+     Flux<IosApp> streamIosApps(){
 
-        Flux<IosApp> iosApps = this.iosAppRepository.findAll();
-        return Flux.zip(Flux.interval(Duration.ofSeconds(1)), iosApps).map(Tuple2::getT2);
+        return Flux.zip(Flux.interval(Duration.ofSeconds(1)), this.iosAppRepository.findAll()).map(Tuple2::getT2);
     }
 
 
     Flux<IosApp> getAllApp(){
         return this.iosAppRepository.findAll();
+    }
+
+    Flux<Long> streamSecondes(){
+        return Flux.interval(Duration.ofSeconds(1));
+
     }
 
 }

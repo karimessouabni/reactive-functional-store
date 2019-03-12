@@ -28,17 +28,7 @@ public class ReactiveFunctionalStoreApplication {
 		SpringApplication.run(ReactiveFunctionalStoreApplication.class, args);
 	}
 
-	@Bean
-	RouterFunction<ServerResponse> routes (IosAppService iosAppService){
 
-		return route(RequestPredicates.GET("/iosApp"),
-				request -> ok()
-						.contentType(MediaType.TEXT_EVENT_STREAM)
-						.body(iosAppService.streamIosApps(), IosApp.class))
-                .andRoute(RequestPredicates.GET("/allApp"),
-                        request -> ok()
-                                .body(iosAppService.getAllApp(), IosApp.class));
-	}
 
 	@Bean
 	CommandLineRunner OnStartPopulateDatabase( IosAppRepository iosAppRepository){
