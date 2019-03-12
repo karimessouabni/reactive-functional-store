@@ -34,7 +34,10 @@ public class ReactiveFunctionalStoreApplication {
 		return route(RequestPredicates.GET("/iosApp"),
 				request -> ok()
 						.contentType(MediaType.TEXT_EVENT_STREAM)
-						.body(iosAppService.streamIosApps(), IosApp.class));
+						.body(iosAppService.streamIosApps(), IosApp.class))
+                .andRoute(RequestPredicates.GET("/allApp"),
+                        request -> ok()
+                                .body(iosAppService.getAllApp(), IosApp.class));
 	}
 
 	@Bean

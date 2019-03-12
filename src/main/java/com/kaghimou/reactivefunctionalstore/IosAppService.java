@@ -24,4 +24,8 @@ public class IosAppService {
     }
 
 
+    Flux<IosApp> getAllApp(){
+        return this.iosAppRepository.findAll();
+    }
+
 }
