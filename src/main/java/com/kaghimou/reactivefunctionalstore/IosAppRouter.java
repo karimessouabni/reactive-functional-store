@@ -18,7 +18,7 @@ public class IosAppRouter {
 
         return route(GET("/iosApp"), request -> ok()
                         .contentType(MediaType.TEXT_EVENT_STREAM)
-                        .body(iosAppService.streamSecondes(), Long.class))
+                .body(iosAppService.streamIosApps(), IosApp.class))
 
 
                 .andRoute(GET("/allApp"), request -> ok()
