@@ -19,6 +19,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
     private String name;
 
-    private Integer DownloadNumber;
+    private Integer stars;
 
 }

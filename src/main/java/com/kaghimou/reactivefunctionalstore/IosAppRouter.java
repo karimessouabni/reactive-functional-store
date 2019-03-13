@@ -17,7 +17,7 @@ public class IosAppRouter {
     RouterFunction<ServerResponse> routes (IosAppService iosAppService){
 
         return route(GET("/iosApp"), request -> ok()
-                        .contentType(MediaType.TEXT_EVENT_STREAM)
+                .contentType(MediaType.TEXT_EVENT_STREAM)
                 .body(iosAppService.streamIosApps(), IosApp.class))
 
 
@@ -25,8 +25,9 @@ public class IosAppRouter {
                         .body(iosAppService.getAllApp(), IosApp.class))
 
 
-                .andRoute(GET("/seconds"), request -> ok()
-                        .body(iosAppService.streamSeconds(), Long.class));
+                .andRoute(GET("/secondsn"), request -> ok()
+                        .contentType(MediaType.TEXT_EVENT_STREAM)
+                        .body(iosAppService.getElementFromFlux(), Long.class));
 
     }
 

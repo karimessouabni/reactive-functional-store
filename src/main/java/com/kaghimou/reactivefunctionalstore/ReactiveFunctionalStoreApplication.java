@@ -17,19 +17,16 @@ public class ReactiveFunctionalStoreApplication {
 	}
 
 
-
 	@Bean
 	CommandLineRunner OnStartPopulateDatabase( IosAppRepository iosAppRepository){
 		return args ->
 		iosAppRepository.deleteAll().subscribe(null, null, () ->
 
                 Stream.of("Angry Birds, Facebook, Instagram, Twitter, Slack, Google, Gmail".split(", ")).map(
-					appName -> new IosApp(UUID.randomUUID().toString(), appName, new Random().nextInt(1000000)))
+						appName -> new IosApp(UUID.randomUUID().toString(), appName, new Random().nextInt(6)))
 					.forEach(iosApp -> iosAppRepository.save(iosApp).subscribe(System.out::println)));
 
 	}
-
-
 
 
 }
